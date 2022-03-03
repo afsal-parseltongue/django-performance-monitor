@@ -4,7 +4,7 @@ import json
 
 from django.conf import settings
 
-from .models import RequestLog
+from .models import RequestLog, Config
 from .constants import DEFAUL_LOG_THRESHOLD
 
 
@@ -18,7 +18,7 @@ class LogRequestMiddleware:
         response = self.get_response(request)
         time_taken = time.time() - start
         log_threshold = getattr(settings, "LOG_THRESHOLD", DEFAUL_LOG_THRESHOLD)
-        if time_taken > log_threshold:
+        if time_taken > log_threshold and Config.is_enabled():
             data = {
                 "method": request.method,
                 "path": request.path,
