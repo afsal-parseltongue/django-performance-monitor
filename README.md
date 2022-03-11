@@ -1,5 +1,7 @@
 # Django Performance Monitor
 
+https://img.shields.io/pypi/pyversions/django-performance-monitor https://img.shields.io/pypi/l/django-performance-monitor
+
  Django Performance monitor is simple django application for tracking the view which takes
  more time than a threshold value (By default 1.5 Seconds). Also using a Configuration in 
  admin we turn on or off this feature
