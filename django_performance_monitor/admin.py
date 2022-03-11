@@ -3,5 +3,9 @@ from django.contrib import admin
 from .models import RequestLog, Config
 
 
-admin.site.register(RequestLog)
+class RequestLogAdmin(admin.ModelAdmin):
+    list_display = ('method', 'path', 'time_taken')
+
+
+admin.site.register(RequestLog, RequestLogAdmin)
 admin.site.register(Config)
