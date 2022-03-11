@@ -40,8 +40,8 @@ $ pip install django-performance-monitor
 ```bash
     $ python manage.py migrate 
 ```
- All the requests are logged to ** Request logs ** under the app ** DJANGO_PERFORMANCE_MONITOR **
- To disable this logging go to ** Config ** under the app ** DJANGO_PERFORMANCE_MONITOR ** if there is no config object
+ All the requests are logged to **Request logs** under the app **DJANGO_PERFORMANCE_MONITOR**
+ To disable this logging go to **Config** under the app **DJANGO_PERFORMANCE_MONITOR**, if there is no config object
  create one with **Is active** un checked. If exist change to ** Is active ** to un checked.
 
 ## Communication
