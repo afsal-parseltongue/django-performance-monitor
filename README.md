@@ -51,6 +51,29 @@ $ pip install django-performance-monitor
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
+## Contribution
+1. clone code
+
+    ```bash
+    git clone git@github.com:afsal-parseltongue/django-performance-monitor.git
+    ```
+
+2. install `django-performance-monitor` in editable/develop mode
+
+    ```bash
+    cd django-performance-monitor
+    pip3 install -e ./
+    ```
+
+3. change the code
+
+4. run the test
+
+    ```bash
+    cd example_project
+    python3 manage.py test
+    ```
+
 ## Author
 
 Afsal Salim, afsal@parseltongue.co.in
