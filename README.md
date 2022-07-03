@@ -51,6 +51,49 @@ $ pip install django-performance-monitor
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
+## Configuration
+### `LOG_THRESHOLD`
+the threshold is determined from:  
+
+1. the `LOG_THRESHOLD` attribute on view class
+2. the `LOG_THRESHOLD` from settings
+3. the default 1.5
+
+so if you know exactly some certain views will take a lot of time, you can set `LOG_THRESHOLD` to a bigger number on the view to reduce some redundant log.
+
+### `LOG_EXCLUDE_PATTERNS`
+the `LOG_EXCLUDE_PATTERNS` can exclude certain urls patterns, for example:
+
+```python
+LOG_EXCLUDE_PATTERNS = [
+    re.compile("/admin/"),  # exclude all admin url
+    re.compile("/slow_app/"),  # exclude slow django app
+]
+```
+
+## Contribution
+1. clone code
+
+    ```bash
+    git clone git@github.com:afsal-parseltongue/django-performance-monitor.git
+    ```
+
+2. install `django-performance-monitor` in editable/develop mode
+
+    ```bash
+    cd django-performance-monitor
+    pip3 install -e ./
+    ```
+
+3. change the code
+
+4. run the test
+
+    ```bash
+    cd example_project
+    python3 manage.py test
+    ```
+
 ## Author
 
 Afsal Salim, afsal@parseltongue.co.in
