@@ -51,6 +51,15 @@ $ pip install django-performance-monitor
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
+## Configuration
+the threshold is determined from:  
+
+1. the `LOG_THRESHOLD` attribute on view class
+2. the `LOG_THRESHOLD` from settings
+3. the default 1.5
+
+so if you know exactly some certain views will take a lot of time, you can set `LOG_THRESHOLD` to a bigger number on the view to reduce some redundant log.
+
 ## Contribution
 1. clone code
 

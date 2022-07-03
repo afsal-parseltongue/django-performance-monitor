@@ -17,15 +17,28 @@ import time
 
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import View
 from django.http import HttpResponse
 
 
-def delay_view(request, delay=0, *args, **kwargs):
-    time.sleep(delay)
-    return HttpResponse("ok")
+class DelayView(View):
+
+    def get(self, request, delay=0, *args, **kwarg):
+        time.sleep(delay)
+        return HttpResponse("ok")
+
+
+class Within3sView(View):
+
+    LOG_THRESHOLD = 3
+
+    def get(self, request, delay=0, *args, **kwarg):
+        time.sleep(delay)
+        return HttpResponse("ok")
 
 
 urlpatterns = [
-    path("delay/<int:delay>/", delay_view),
+    path("delay/<int:delay>/", DelayView.as_view()),
+    path("with3s/<int:delay>/", Within3sView.as_view()),
     path('admin/', admin.site.urls),
 ]
