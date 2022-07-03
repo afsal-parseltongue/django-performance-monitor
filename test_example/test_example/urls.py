@@ -39,6 +39,7 @@ class Within3sView(View):
 
 urlpatterns = [
     path("delay/<int:delay>/", DelayView.as_view()),
+    path("exclude/<int:delay>/", DelayView.as_view()),
     path("with3s/<int:delay>/", Within3sView.as_view()),
     path('admin/', admin.site.urls),
 ]

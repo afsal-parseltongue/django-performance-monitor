@@ -21,6 +21,10 @@ class LogRequestMiddleware:
         response = self.get_response(request)
         time_taken = time.time() - start
         if time_taken > request._log_threshold and Config.is_enabled():
+            exclude_patterns = getattr(settings, "LOG_EXCLUDE_PATTERNS", [])
+            for exclude_pattern in exclude_patterns:
+                if exclude_pattern.match(request.path):
+                    return response
             data = {
                 "method": request.method,
                 "path": request.path,

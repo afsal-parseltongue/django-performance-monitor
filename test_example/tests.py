@@ -3,6 +3,8 @@
 # Xiang Wang <ramwin@qq.com>
 
 
+import re
+
 from django.test import TestCase
 
 
@@ -46,6 +48,22 @@ class RequestLogTest(TestCase):
     def test_customer_setting_not_work(self):
         with self.settings(LOG_THRESHOLD=1):
             client.get("/with3s/3/")
+            self.assertEqual(
+                RequestLog.objects.count(),
+                1
+            )
+
+    def test_exclude_patterns_work(self):
+        with self.settings(LOG_EXCLUDE_PATTERNS=[re.compile("/exclude*")]):
+            client.get("/exclude/3/")
+            self.assertEqual(
+                RequestLog.objects.count(),
+                0
+            )
+
+    def test_exclude_patterns_not_work(self):
+        with self.settings(LOG_EXCLUDE_PATTERNS=[ ]):
+            client.get("/exclude/3/")
             self.assertEqual(
                 RequestLog.objects.count(),
                 1
